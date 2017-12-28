@@ -4,9 +4,11 @@ namespace NetCoreTests.EntityFrameworkCore.Data
 {
     public class TestContext : DbContext
     {
-        public virtual DbSet<ProductCategory> Categories { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
 
         public virtual DbSet<Product> Products { get; set; }
+
+        public virtual DbSet<ProductCategory> ProductCategories { get; set; }
 
         public TestContext(DbContextOptions<TestContext> options)
             : base(options)
