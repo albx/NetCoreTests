@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace NetCoreTests.EntityFrameworkCore
 {
@@ -11,18 +12,15 @@ namespace NetCoreTests.EntityFrameworkCore
             _children = new HashSet<Category>();
         }
 
+        public Guid Id { get; set; }
+
         public string Name { get; set; }
 
         public IEnumerable<Category> Children => _children;
 
-        public virtual void AddChildren(Category child)
+        public virtual void AddChild(Category child)
         {
             _children.Add(child);
-        }
-
-        public virtual void RemoveChildren(Category child)
-        {
-            _children.Remove(child);
         }
     }
 }

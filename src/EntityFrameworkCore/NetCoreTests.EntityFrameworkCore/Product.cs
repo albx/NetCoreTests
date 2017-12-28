@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace NetCoreTests.EntityFrameworkCore
@@ -12,24 +13,21 @@ namespace NetCoreTests.EntityFrameworkCore
             _productCategories = new HashSet<ProductCategory>();
         }
 
+        public Guid Id { get; set; }
+
         public string Code { get; set; }
 
         public string Name { get; set; }
 
-        public IEnumerable<ProductCategory> Categories { get; set; }
+        public IEnumerable<ProductCategory> Categories => _productCategories;
 
         public virtual void AddCategory(Category category)
         {
             _productCategories.Add(new ProductCategory
             {
+                Id = Guid.NewGuid(),
                 Category = category
             });
-        }
-
-        public virtual void RemoveCategory(Category category)
-        {
-            var productCategory = _productCategories.FirstOrDefault(c => c.Category == category);
-            _productCategories.Remove(productCategory);
         }
     }
 }

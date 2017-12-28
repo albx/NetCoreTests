@@ -30,6 +30,7 @@ namespace NetCoreTests.EntityFrameworkCore.Tests.Fixtures
         {
             var product = new Product
             {
+                Id = Guid.NewGuid(),
                 Code = "PR01",
                 Name = "Product #1"
             };
@@ -37,15 +38,17 @@ namespace NetCoreTests.EntityFrameworkCore.Tests.Fixtures
 
             var category = new Category
             {
+                Id = Guid.NewGuid(),
                 Name = "Category #1"
             };
             Context.Categories.Add(category);
 
             var childCategory = new Category
             {
+                Id = Guid.NewGuid(),
                 Name = "Child category #1"
             };
-            category.AddChildren(childCategory);
+            category.AddChild(childCategory);
 
             product.AddCategory(category);
 
