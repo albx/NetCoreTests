@@ -52,6 +52,13 @@ namespace NetCoreTests.EntityFrameworkCore.Tests.Fixtures
 
             product.AddCategory(category);
 
+            var user = new User
+            {
+                Id = Guid.NewGuid(),
+                Name = "User 1"
+            };
+            Context.Users.Add(user);
+
             Context.SaveChanges();
         }
 

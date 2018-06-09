@@ -10,6 +10,8 @@ namespace NetCoreTests.EntityFrameworkCore.Data
 
         public virtual DbSet<ProductCategory> ProductCategories { get; set; }
 
+        public virtual DbSet<User> Users { get; set; }
+
         public TestContext(DbContextOptions<TestContext> options)
             : base(options)
         {
@@ -44,6 +46,9 @@ namespace NetCoreTests.EntityFrameworkCore.Data
                 .Metadata
                 .FindNavigation(nameof(Product.Categories))
                 .SetField("_productCategories");
+
+            modelBuilder.Entity<User>()
+                .OwnsOne(u => u.ProfileImage);
 
             base.OnModelCreating(modelBuilder);
         }
